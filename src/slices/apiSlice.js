@@ -2,7 +2,17 @@ import { fetchBaseQuery,createApi } from "@reduxjs/toolkit/query/react";
 import { BASE_URL } from "../constants";
 
 
-const baseQuery = fetchBaseQuery({baseUrl: BASE_URL});
+//const baseQuery = fetchBaseQuery({baseUrl: BASE_URL});
+
+const baseQuery = fetchBaseQuery({
+  baseUrl: BASE_URL,
+  // Add the withCredentials option to include cookies in the request
+  // This will enable cross-origin authentication and cookie sharing
+  fetchOptions: {
+    credentials: 'include', // 'include' means include cookies
+  },
+});
+
 
 export const apiSlice = createApi({
   baseQuery,
